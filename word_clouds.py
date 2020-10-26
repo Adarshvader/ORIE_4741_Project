@@ -8,6 +8,19 @@ data = pd.read_csv("processed_lyrics.csv")
 
 lyrics = " ".join(w for w in data["lyric"])
 
+lyrics_angry_rows = data.loc[data['mood'] == 'angry']
+lyrics_angry = " ".join(w for w in lyrics_angry_rows["lyric"])
+
+lyrics_sad_rows = data.loc[data['mood'] == 'sad']
+lyrics_sad = " ".join(w for w in lyrics_sad_rows["lyric"])
+
+lyrics_relaxed_rows = data.loc[data['mood'] == 'relaxed']
+lyrics_relaxed = " ".join(w for w in lyrics_relaxed_rows["lyric"])
+
+lyrics_happy_rows = data.loc[data['mood'] == 'happy']
+lyrics_happy = " ".join(w for w in lyrics_happy_rows["lyric"])
+
+
 # arr = []
 # for i in range(len(data)):
 #     arr.extend([data.loc[i, "lyric"].split()])
@@ -34,4 +47,8 @@ def generateWordCloud(corpus: str, cmap: str) -> wordcloud:
 
 
 # Generate the Word Clouds for each of the Corpuses and save them as a PNG file
-generateWordCloud(corpus=lyrics, cmap='viridis').to_file('wc_1.png')
+generateWordCloud(corpus=lyrics, cmap='viridis').to_file('wc_all.png')
+generateWordCloud(corpus=lyrics_angry, cmap='magma').to_file('wc_angry.png')
+generateWordCloud(corpus=lyrics_happy, cmap='Wistia').to_file('wc_happy.png')
+generateWordCloud(corpus=lyrics_sad, cmap='Blues').to_file('wc_sad.png')
+generateWordCloud(corpus=lyrics_relaxed, cmap='Spectral').to_file('wc_relaxed.png')
