@@ -3,22 +3,22 @@ from wordcloud import WordCloud
 import pandas as pd
 import matplotlib.pyplot as plt, seaborn as sb
 
-data = pd.read_csv("processed_lyrics.csv")
+data = pd.read_csv("processed_lyrics_delet2.csv")
 
 
-lyrics = " ".join(w for w in data["lyric"])
+lyrics = " ".join(w for w in data["lyrics"])
 
 lyrics_angry_rows = data.loc[data['mood'] == 'angry']
-lyrics_angry = " ".join(w for w in lyrics_angry_rows["lyric"])
+lyrics_angry = " ".join(w for w in lyrics_angry_rows["lyrics"])
 
 lyrics_sad_rows = data.loc[data['mood'] == 'sad']
-lyrics_sad = " ".join(w for w in lyrics_sad_rows["lyric"])
+lyrics_sad = " ".join(w for w in lyrics_sad_rows["lyrics"])
 
 lyrics_relaxed_rows = data.loc[data['mood'] == 'relaxed']
-lyrics_relaxed = " ".join(w for w in lyrics_relaxed_rows["lyric"])
+lyrics_relaxed = " ".join(w for w in lyrics_relaxed_rows["lyrics"])
 
 lyrics_happy_rows = data.loc[data['mood'] == 'happy']
-lyrics_happy = " ".join(w for w in lyrics_happy_rows["lyric"])
+lyrics_happy = " ".join(w for w in lyrics_happy_rows["lyrics"])
 
 
 # arr = []
